@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Nepal - Madhyabindu-Aarungkhola</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #e84118;
+            --secondary: #192a56;
+            --light: #f5f6fa;
+            --dark: #2f3640;
+            --green: #44bd32;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1544735716-392fe2489ffc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
+            text-align: center;
+            padding-top: 2rem;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #c23616;
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .attractions {
+            background-color: var(--light);
+        }
+
+        .attraction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .attraction-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .attraction-card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .local-highlight {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1564507004663-b6dfb3c824d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        .local-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .culture {
+            background-color: white;
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .culture-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .culture-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Nepal<span>Explore</span></div>
+                <ul class="nav-links">
+                    <li><a href="#about">About Nepal</a></li>
+                    <li><a href="#attractions">Attractions</a></li>
+                    <li><a href="#local">Madhyabindu</a></li>
+                    <li><a href="#culture">Culture</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="hero">
+                <h1>Discover the Beauty of Nepal</h1>
+                <p>From the majestic Himalayas to the cultural heartland of Madhyabindu-Aarungkhola</p>
+                <a href="#about" class="btn">Explore Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Nepal Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Nepal</h2>
+                <p>Land of Himalayas, culture, and natural beauty</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Nepal, officially the Federal Democratic Republic of Nepal, is a landlocked country in South Asia. It is mainly situated in the Himalayas, but also includes parts of the Indo-Gangetic Plain.</p>
+                    <p>With an estimated population of 30 million, Nepal is the 48th largest country by population and 93rd largest country by area. It borders China in the north and India in the south, east, and west.</p>
+                    <p>Nepal has a diverse geography, including fertile plains, subalpine forested hills, and eight of the world's ten tallest mountains, including Mount Everest, the highest point on Earth.</p>
+                    <p>The country is multi-ethnic and multi-lingual, with Nepali as the official language. The capital and largest city is Kathmandu.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/nepal-landscape.jpg" alt="Nepal Landscape">
+                </div>
+            </div> 
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section id="attractions" class="attractions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Top Attractions</h2>
+                <p>Must-visit places in Nepal</p>
+            </div>
+            <div class="attraction-grid">
+                <div class="attraction-card">
+                    <div class="card-img">
+                         <img src="images/mount-everest.jpg" alt="Mount Everest">
+                    </div>
+                    <div class="card-content">
+                        <h3>Mount Everest</h3>
+                        <p>The world's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas.</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="card-img">
+                         <img src="images/pashupatinath-temple.jpg" alt="Pashupatinath Temple">
+                    </div>
+                    <div class="card-content">
+                        <h3>Pashupatinath Temple</h3>
+                        <p>A famous Hindu temple dedicated to Lord Shiva, located on the banks of the Bagmati River in Kathmandu.</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="card-img">
+                         <img src="images/pokhara.jpg" alt="Pokhara">
+                    </div>
+                    <div class="card-content">
+                        <h3>Pokhara</h3>
+                        <p>Known as the "Tourist Capital of Nepal", Pokhara is famous for its tranquil atmosphere and beautiful scenery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Highlight Section -->
+    <section id="local" class="local-highlight">
+        <div class="container">
+            <div class="section-title">
+                <h2>Madhyabindu-Aarungkhola</h2>
+                <p>Your beautiful hometown in Nepal</p>
+            </div>
+            <div class="local-content">
+                <p>Madhyabindu is a growing municipality in Nawalpur District of Nepal. Located in the beautiful hills of the Gandaki Province, it offers stunning views of the Himalayas and a peaceful environment.</p>
+                <p>Aarungkhola is a scenic area within Madhyabindu, known for its natural beauty and cultural significance. The region is surrounded by lush green forests, flowing rivers, and terraced fields.</p>
+                <p>The area is predominantly agricultural, with farming being the main occupation of the local people. The community is known for its warmth and hospitality towards visitors.</p>
+                <p>Madhyabindu-Aarungkhola offers opportunities for hiking, nature walks, and cultural experiences. The local festivals and traditions provide a glimpse into the rich cultural heritage of Nepal.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section id="culture" class="culture">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nepalese Culture</h2>
+                <p>Rich traditions and heritage</p>
+            </div>
+            <div class="culture-grid">
+                <div class="culture-item">
+                    <div class="culture-icon">
+                        <i class="fas fa-om"></i>
+                    </div>
+                    <h3>Religion</h3>
+                    <p>Nepal is a secular country with Hinduism and Buddhism as the main religions coexisting harmoniously.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="culture-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Cuisine</h3>
+                    <p>Nepalese cuisine includes dal bhat (lentil soup with rice), momo (dumplings), and various ethnic foods.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="culture-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Festivals</h3>
+                    <p>Major festivals include Dashain, Tihar, Holi, and Buddha Jayanti, celebrated with great enthusiasm.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="culture-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>Handicrafts</h3>
+                    <p>Nepal is famous for handicrafts like thangka paintings, wood carvings, and handmade paper products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>We are dedicated to promoting the beauty and culture of Nepal, with special focus on local communities like Madhyabindu-Aarungkhola.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Madhyabindu-10, Aarungkhola, Karamghari, Nepal</p>
+                    <p><i class="fas fa-phone"></i> +977-981-7558911</p>
+                    <p><i class="fas fa-envelope"></i> ankitasunar039@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NepalExplore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Simple animation for sections when they come into view
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
